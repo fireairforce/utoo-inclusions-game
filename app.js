@@ -19,33 +19,33 @@ const GAME = {
 };
 
 const toolchainKnives = [
-  { label: "Package", detail: "ut install", color: "#24bee9" },
-  { label: "Dev", detail: "up dev", color: "#298ff0" },
-  { label: "Build", detail: "Turbopack", color: "#1765db" },
-  { label: "Rust", detail: "Core", color: "#ee6b3b" },
-  { label: "Native", detail: "NAPI-RS", color: "#5867e8" },
+  { label: "包管理", detail: "ut install", color: "#24bee9" },
+  { label: "开发", detail: "up dev", color: "#298ff0" },
+  { label: "构建", detail: "Turbopack", color: "#1765db" },
+  { label: "Rust", detail: "核心", color: "#ee6b3b" },
+  { label: "原生", detail: "NAPI-RS", color: "#5867e8" },
   { label: "Wasm", detail: "WebAssembly", color: "#20b8bc" },
-  { label: "Preview", detail: "Browser", color: "#2dbb82" },
-  { label: "Ship", detail: "Web ready", color: "#7059e6" },
+  { label: "预览", detail: "浏览器", color: "#2dbb82" },
+  { label: "发布", detail: "网页就绪", color: "#7059e6" },
 ];
 
 const motionPattern = [
-  { mode: "steady", multiplier: 1, duration: 1, label: "STEADY SPEED", tone: "blue" },
-  { mode: "turbo", multiplier: 1.55, duration: 0.78, label: "TURBO SPEED!", tone: "orange" },
-  { mode: "slow", multiplier: 0.45, duration: 0.74, label: "SLOW MOTION", tone: "blue" },
-  { mode: "reverse", multiplier: -0.9, duration: 0.9, label: "REVERSE!", tone: "orange" },
+  { mode: "steady", multiplier: 1, duration: 1, label: "匀速旋转", tone: "blue" },
+  { mode: "turbo", multiplier: 1.55, duration: 0.78, label: "加速旋转！", tone: "orange" },
+  { mode: "slow", multiplier: 0.45, duration: 0.74, label: "慢速旋转", tone: "blue" },
+  { mode: "reverse", multiplier: -0.9, duration: 0.9, label: "反向旋转！", tone: "orange" },
   {
     mode: "reverse-turbo",
     multiplier: -1.45,
     duration: 0.76,
-    label: "REVERSE TURBO!",
+    label: "反向加速！",
     tone: "orange",
   },
   {
     mode: "reverse-slow",
     multiplier: -0.42,
     duration: 0.72,
-    label: "SLOW REVERSE",
+    label: "反向慢速",
     tone: "blue",
   },
 ];
@@ -72,7 +72,7 @@ app.innerHTML = `
         <img src="./assets/utoo-logo.png" alt="Utoo" />
         <span class="brand-copy">
           <strong>Utoo</strong>
-          <small>Rust-powered Web toolchain</small>
+          <small>Rust 驱动的 Web 工具链</small>
         </span>
       </a>
       <div class="topbar-actions">
@@ -82,14 +82,14 @@ app.innerHTML = `
 
     <main class="game-layout">
       <section class="intro" aria-labelledby="page-title">
-        <p class="eyebrow">UTOO BUILD BLADES · ENDLESS CHALLENGE</p>
+        <p class="eyebrow">UTOO BUILD BLADES · 无限挑战</p>
         <h1 id="page-title">看准空位，<span>插满 Utoo 构建盘</span></h1>
-        <p class="lead">中央 Utoo 圆盘持续旋转。按下 Space 发射工具链小刀，避开已经插入的刀，一关一关挑战你的极限。</p>
+        <p class="lead">中央 Utoo 圆盘持续旋转。按下空格键发射工具链小刀，避开已经插入的刀，一关一关挑战你的极限。</p>
 
         <div class="steps">
           <div class="step">
             <b>01</b>
-            <div><strong>按 Space 发射</strong><span>小刀会从底部直冲旋转的 Utoo 圆盘。</span></div>
+            <div><strong>按空格键发射</strong><span>小刀会从底部直冲旋转的 Utoo 圆盘。</span></div>
           </div>
           <div class="step">
             <b>02</b>
@@ -107,21 +107,21 @@ app.innerHTML = `
           </button>
           <div>
             <strong data-control-copy>开始挑战</strong>
-            <span>游戏开始后，继续按 Space 发射</span>
+            <span>游戏开始后，继续按空格键发射</span>
           </div>
         </div>
 
         <section class="best-score-card" aria-labelledby="best-score-title">
           <header>
             <div>
-              <span>BEST RECORD</span>
+              <span>最佳成绩</span>
               <strong id="best-score-title">最高纪录</strong>
             </div>
             <small>刷新后保留</small>
           </header>
           <div class="best-score-value">
             <strong data-best-score>000</strong>
-            <span>最高到达 <b>Lv.<em data-best-level>1</em></b></span>
+            <span>最高到达 <b>第 <em data-best-level>1</em> 关</b></span>
           </div>
         </section>
       </section>
@@ -132,11 +132,11 @@ app.innerHTML = `
             <i></i>
             <div>
               <strong>Utoo Build Blades</strong>
-              <span>One key. Endless levels.</span>
+              <span>一键操作 · 无限关卡</span>
             </div>
           </div>
           <div class="stats" aria-live="polite">
-            <div><span>关卡</span><strong>Lv.<em data-level>1</em></strong></div>
+            <div><span>关卡</span><strong>第 <em data-level>1</em> 关</strong></div>
             <div><span>进度</span><strong><em data-progress>0</em> / <em data-goal>5</em></strong></div>
             <div><span>得分</span><strong data-points>000</strong></div>
             <div><span>最高分</span><strong data-header-best>000</strong></div>
@@ -155,8 +155,8 @@ app.innerHTML = `
 
           <div class="game-overlay is-visible" data-overlay>
             <div class="overlay-card">
-              <span class="overlay-kicker">READY TO THROW?</span>
-              <h2 data-overlay-title>按 Space 开始</h2>
+              <span class="overlay-kicker">准备好了吗？</span>
+              <h2 data-overlay-title>按空格键开始</h2>
               <p data-overlay-copy>把小刀插进旋转圆盘的空位，千万别撞到已有的小刀。</p>
               <button type="button" data-overlay-action>
                 <kbd>SPACE</kbd>
@@ -174,14 +174,14 @@ app.innerHTML = `
         </div>
 
         <div class="stage-foot">
-          <span class="next-label">NEXT BLADE · <strong data-current>Package</strong></span>
-          <span class="prototype-state" data-state>state=ready · level=1 · progress=0/5</span>
+          <span class="next-label">下一把 · <strong data-current>包管理</strong></span>
+          <span class="prototype-state" data-state>准备中 · 第 1 关 · 进度 0/5 · 得分 0</span>
         </div>
       </section>
     </main>
 
     <footer>
-      <span>Package Manager</span><i></i><span>Turbopack</span><i></i><span>Rust</span><i></i><span>Native</span><i></i><span>Wasm</span>
+      <span>包管理</span><i></i><span>Turbopack</span><i></i><span>Rust</span><i></i><span>原生</span><i></i><span>Wasm</span>
     </footer>
   </div>
 `;
@@ -315,7 +315,7 @@ function addPresetKnives() {
     attachedKnives.push({
       localAngle: ((index + 1) * Math.PI * 2) / (presetCount + 1) + 0.35,
       color: "#70849a",
-      label: "Guard",
+      label: "障碍",
       detail: "",
       blocker: true,
     });
@@ -358,7 +358,7 @@ function startRun() {
   phase = "playing";
   overlay.classList.remove("is-visible");
   setupLevel(false);
-  showFeedback("LEVEL 1 · START", "blue");
+  showFeedback("第 1 关 · 开始", "blue");
 }
 
 function setupLevel(showBanner) {
@@ -377,7 +377,7 @@ function setupLevel(showBanner) {
   applyLevelTheme(level, showBanner);
 
   if (showBanner) {
-    levelBanner.innerHTML = `<span>LEVEL ${level}</span><strong>${goalForLevel(level)} BLADES</strong>`;
+    levelBanner.innerHTML = `<span>第 ${level} 关</span><strong>插入 ${goalForLevel(level)} 把小刀</strong>`;
     levelBanner.classList.add("is-visible");
     window.setTimeout(() => {
       levelBanner.classList.remove("is-visible");
@@ -394,7 +394,7 @@ function shootKnife() {
   const knife = nextKnife();
   projectile = { ...knife, y: GAME.projectileStartY };
   canShoot = false;
-  showFeedback(`${knife.label} · FIRE!`, knife.label === "Rust" ? "orange" : "blue");
+  showFeedback(`${knife.label} · 发射！`, knife.label === "Rust" ? "orange" : "blue");
   updateInterface();
 }
 
@@ -466,7 +466,7 @@ function resolveProjectile() {
     void stage.offsetWidth;
     stage.classList.add("is-miss");
     window.setTimeout(() => stage.classList.remove("is-miss"), 460);
-    showFeedback(lives > 0 ? "撞刀了！再找一个空位" : "BUILD CRASH", "red");
+    showFeedback(lives > 0 ? "撞刀了！再找一个空位" : "构建失败", "red");
 
     if (lives <= 0) {
       finishRun();
@@ -498,7 +498,7 @@ function resolveProjectile() {
   void stage.offsetWidth;
   stage.classList.add("is-hit");
   window.setTimeout(() => stage.classList.remove("is-hit"), 430);
-  showFeedback(`插入成功 · COMBO x${combo} · +${earned}`, inserted.label === "Rust" ? "orange" : "blue");
+  showFeedback(`插入成功 · 连击 x${combo} · +${earned}`, inserted.label === "Rust" ? "orange" : "blue");
 
   if (levelProgress >= goalForLevel(level)) {
     clearLevel();
@@ -518,7 +518,7 @@ function clearLevel() {
   const clearBonus = 500 * level * lives;
   points += clearBonus;
   highScore = Math.max(highScore, points);
-  showFeedback(`LEVEL ${level} CLEAR · +${clearBonus}`, "orange");
+  showFeedback(`第 ${level} 关完成 · +${clearBonus}`, "orange");
   level += 1;
   window.setTimeout(() => setupLevel(true), 620);
   updateInterface();
@@ -597,20 +597,20 @@ function setOverlay(mode) {
   resultCountdownElement.hidden = true;
   const kicker = overlay.querySelector(".overlay-kicker");
   if (mode === "ready") {
-    kicker.textContent = "READY TO THROW?";
-    overlayTitle.textContent = "按 Space 开始";
+    kicker.textContent = "准备好了吗？";
+    overlayTitle.textContent = "按空格键开始";
     overlayCopy.textContent = "把小刀插进旋转圆盘的空位，千万别撞到已有的小刀。";
     overlayActionCopy.textContent = "开始第 1 关";
     return;
   }
 
-  kicker.textContent = "RUN COMPLETE";
+  kicker.textContent = "挑战结束";
   const rank = level >= 8 ? "S" : level >= 5 ? "A" : level >= 3 ? "B" : "C";
   overlayTitle.textContent = `${rank} 级 · 到达第 ${level} 关`;
-  overlayCopy.textContent = `${isNewHighScore ? "新纪录！" : "本轮结束。"} 总分 ${points}，成功插入 ${totalInserted} 把工具链小刀。最高纪录 Lv.${bestRecord.level} / ${bestRecord.score} 分。`;
+  overlayCopy.textContent = `${isNewHighScore ? "新纪录！" : "本轮结束。"} 总分 ${points}，成功插入 ${totalInserted} 把工具链小刀。最高纪录：第 ${bestRecord.level} 关 / ${bestRecord.score} 分。`;
   overlayActionCopy.textContent = "立即返回首页";
   rewardElement.hidden = false;
-  rewardElement.innerHTML = `<span>${isNewHighScore ? "NEW HIGH SCORE" : `${rank} RANK · BUILD BLADES`}</span><strong>${points}</strong>`;
+  rewardElement.innerHTML = `<span>${isNewHighScore ? "刷新最高分" : `${rank} 级 · 构建挑战`}</span><strong>${points}</strong>`;
   startReturnCountdown();
 }
 
@@ -650,9 +650,16 @@ function updateInterface() {
   currentElement.textContent = nextKnife().label;
   controlCopy.textContent = phase === "ready" ? "开始挑战" : phase === "lost" ? "再玩一次" : "发射小刀";
   comboElement.classList.toggle("is-visible", combo >= 2);
-  comboElement.innerHTML = `COMBO <strong>x${combo}</strong>`;
+  comboElement.innerHTML = `连击 <strong>x${combo}</strong>`;
 
-  stateElement.textContent = `state=${phase} · level=${level} · progress=${levelProgress}/${goal} · score=${points} · theme=${themeForLevel(level).name} · motion=${motionMode} · speed=${rotationSpeed.toFixed(2)}→${targetRotationSpeed.toFixed(2)} · gap=${nearestGap.toFixed(2)} · impact=${impactGap.toFixed(2)}/${knifeCollisionAngle().toFixed(2)} · projectile=${projectile ? "flying" : canShoot ? "ready" : "locked"}`;
+  const phaseLabel = {
+    ready: "准备中",
+    playing: "进行中",
+    "level-clear": "过关",
+    lost: "已结束",
+  }[phase];
+  const motionLabel = motionPattern.find((motion) => motion.mode === motionMode)?.label || "匀速旋转";
+  stateElement.textContent = `${phaseLabel} · 第 ${level} 关 · 进度 ${levelProgress}/${goal} · 得分 ${points} · ${motionLabel.replace("！", "")}`;
   stateElement.dataset.phase = phase;
   stateElement.dataset.level = String(level);
   stateElement.dataset.progress = String(levelProgress);
@@ -821,7 +828,7 @@ function drawKnives() {
     context.fillStyle = "#1765db";
     context.font = "900 10px Inter, system-ui, sans-serif";
     context.textAlign = "center";
-    context.fillText("SPACE TO THROW", GAME.centerX, GAME.height - 18);
+    context.fillText("按空格键发射", GAME.centerX, GAME.height - 18);
   }
   for (const knife of fallingKnives) {
     drawVerticalKnife(knife, knife.x, knife.y, knife.rotation, knife.opacity);

@@ -82,7 +82,7 @@ app.innerHTML = `
 
     <main class="game-layout">
       <section class="intro" aria-labelledby="page-title">
-        <p class="eyebrow">UTOO BUILD BLADES · 无限挑战</p>
+        <p class="eyebrow">UTOO 构建飞刀 · 无限挑战</p>
         <h1 id="page-title">看准空位，<span>插满 Utoo 构建盘</span></h1>
         <p class="lead">中央 Utoo 圆盘持续旋转。按下空格键发射工具链小刀，避开已经插入的刀，一关一关挑战你的极限。</p>
 
@@ -93,7 +93,7 @@ app.innerHTML = `
           </div>
           <div class="step">
             <b>02</b>
-            <div><strong>避开已有小刀</strong><span>撞刀会失去一次机会，连续命中积累 Combo。</span></div>
+            <div><strong>避开已有小刀</strong><span>撞刀会失去一次机会，连续命中积累连击。</span></div>
           </div>
           <div class="step">
             <b>∞</b>
@@ -103,7 +103,7 @@ app.innerHTML = `
 
         <div class="control-card">
           <button class="space-key" type="button" data-control aria-label="开始游戏或发射小刀">
-            <span>SPACE</span>
+            <span>空格键</span>
           </button>
           <div>
             <strong data-control-copy>开始挑战</strong>
@@ -126,12 +126,12 @@ app.innerHTML = `
         </section>
       </section>
 
-      <section class="stage-card" aria-label="Utoo Build Blades 游戏">
+      <section class="stage-card" aria-label="Utoo 构建飞刀游戏">
         <div class="stage-head">
           <div class="stage-title">
             <i></i>
             <div>
-              <strong>Utoo Build Blades</strong>
+              <strong>Utoo 构建飞刀</strong>
               <span>一键操作 · 无限关卡</span>
             </div>
           </div>
@@ -159,7 +159,7 @@ app.innerHTML = `
               <h2 data-overlay-title>按空格键开始</h2>
               <p data-overlay-copy>把小刀插进旋转圆盘的空位，千万别撞到已有的小刀。</p>
               <button type="button" data-overlay-action>
-                <kbd>SPACE</kbd>
+                <kbd>空格键</kbd>
                 <span data-overlay-action-copy>开始第 1 关</span>
               </button>
               <div class="reward" data-reward hidden></div>

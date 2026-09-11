@@ -19,14 +19,14 @@ const GAME = {
 };
 
 const toolchainKnives = [
-  { label: "包管理", detail: "ut install", color: "#24bee9" },
-  { label: "开发", detail: "up dev", color: "#298ff0" },
-  { label: "构建", detail: "Turbopack", color: "#1765db" },
-  { label: "Rust", detail: "核心", color: "#ee6b3b" },
-  { label: "原生", detail: "NAPI-RS", color: "#5867e8" },
+  { label: "Package", detail: "ut install", color: "#24bee9" },
+  { label: "Dev", detail: "Dev Server", color: "#298ff0" },
+  { label: "Build", detail: "Turbopack", color: "#1765db" },
+  { label: "Rust", detail: "Core", color: "#ee6b3b" },
+  { label: "Native", detail: "NAPI-RS", color: "#5867e8" },
   { label: "Wasm", detail: "WebAssembly", color: "#20b8bc" },
-  { label: "预览", detail: "浏览器", color: "#2dbb82" },
-  { label: "发布", detail: "网页就绪", color: "#7059e6" },
+  { label: "Web", detail: "Browser", color: "#2dbb82" },
+  { label: "Deploy", detail: "Production", color: "#7059e6" },
 ];
 
 const motionPattern = [
@@ -82,7 +82,7 @@ app.innerHTML = `
 
     <main class="game-layout">
       <section class="intro" aria-labelledby="page-title">
-        <p class="eyebrow">UTOO 构建飞刀 · 无限挑战</p>
+        <p class="eyebrow">UTOO BUILD BLADES · 无限挑战</p>
         <h1 id="page-title">看准空位，<span>插满 Utoo 构建盘</span></h1>
         <p class="lead">中央 Utoo 圆盘持续旋转。按下空格键发射工具链小刀，避开已经插入的刀，一关一关挑战你的极限。</p>
 
@@ -126,12 +126,12 @@ app.innerHTML = `
         </section>
       </section>
 
-      <section class="stage-card" aria-label="Utoo 构建飞刀游戏">
+      <section class="stage-card" aria-label="Utoo Build Blades 游戏">
         <div class="stage-head">
           <div class="stage-title">
             <i></i>
             <div>
-              <strong>Utoo 构建飞刀</strong>
+              <strong>Utoo Build Blades</strong>
               <span>一键操作 · 无限关卡</span>
             </div>
           </div>
@@ -174,14 +174,14 @@ app.innerHTML = `
         </div>
 
         <div class="stage-foot">
-          <span class="next-label">下一把 · <strong data-current>包管理</strong></span>
+          <span class="next-label">下一把 · <strong data-current>Package</strong></span>
           <span class="prototype-state" data-state>准备中 · 第 1 关 · 进度 0/5 · 得分 0</span>
         </div>
       </section>
     </main>
 
     <footer>
-      <span>包管理</span><i></i><span>Turbopack</span><i></i><span>Rust</span><i></i><span>原生</span><i></i><span>Wasm</span>
+      <span>Package Manager</span><i></i><span>Turbopack</span><i></i><span>Rust</span><i></i><span>Native</span><i></i><span>Wasm</span>
     </footer>
   </div>
 `;
